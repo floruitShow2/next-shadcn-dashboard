@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import { Poppins } from 'next/font/google'
 import { cn } from '@/lib/utils'
 import './globals.css'
@@ -20,7 +21,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(poppins.className, 'dark')}>{children}</body>
+      <body className={cn(poppins.className, 'dark')}>
+        <Suspense fallback={'please wait...'}>
+          {children}
+        </Suspense>
+      </body>
     </html>
   )
 }
